@@ -12,6 +12,10 @@ import re
 import time
 from lib.parser import parse
 
+import os, ssl
+if (not os.environ.get('PYTHONHTTPSVERIFY', '') and
+    getattr(ssl, '_create_unverified_context', None)): 
+    ssl._create_default_https_context = ssl._create_unverified_context
 
 if len(sys.argv) == 1:
     msg = """
